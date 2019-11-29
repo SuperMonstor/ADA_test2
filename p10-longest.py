@@ -4,9 +4,9 @@ def subseq(arr):
 
     for i in range(1, n):
         for j in range(i):
-            if(arr[j] < arr[i] and temp[j] < temp[i] + 1):
+            if(arr[j] < arr[i] and temp[i] < temp[j] + 1):
                 temp[i] = temp[j]+1
     print(temp)
     print(max(temp))
 
-subseq([3,4,-1,0,6,2,3])
+subseq([3, 10, 2, 1, 20])
