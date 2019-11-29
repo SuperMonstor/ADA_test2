@@ -32,8 +32,8 @@ def findPartition(arr):
             if i >= arr[j - 1]:
                 part[i][j] = (part[i][j] or
                               part[i - arr[j - 1]][j - 1])
-    printa(arr)
-    printa(part[sum // 2][n])
+    printa(part)
+    print(part[sum // 2][n])
 
 arr = [3, 1, 1, 2, 2, 1]
 n = len(arr)
