@@ -1,3 +1,10 @@
+def par(a):
+    for x in a:
+        for y in x:
+            print(y, end=" ")
+        print()
+    print()
+
 def knapsack(weight, value, total):
     n = len(value)
     arr = [[0 for x in range(total+1)] for x in range(n)]

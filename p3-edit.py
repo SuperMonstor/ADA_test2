@@ -13,7 +13,6 @@ def edit(str1, str2):
 
     for i in range(m+1):
         for j in range(n+1):
-            print("i, j = " +str(i) +" " +str(j))
             if(i == 0):
                 arr[i][j] = j
             elif(j==0):

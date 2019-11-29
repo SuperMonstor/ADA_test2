@@ -1,4 +1,4 @@
-def par(a):
+def printa(a):
     for x in a:
         for y in x:
             print(y, end=" ")
@@ -18,7 +18,7 @@ def lcs(x, y):
                 arr[i][j] = 1 + arr[i-1][j-1]
             else:
                 arr[i][j] = max(arr[i-1][j], arr[i][j-1])
-    par(arr)
+    printa(arr)
     i = len(arr)-1
     j = len(arr[0])-1
     str = ""
