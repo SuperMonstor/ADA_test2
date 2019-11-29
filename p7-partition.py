@@ -1,31 +1,24 @@
-def printa(a):
-    for x in a:
-        for y in x:
-            print(y, end=" ")
-        print()
-    print()
-
-def findarrition(mat):
-    n = len(mat)
-    if(n%2 != 0):
+def findPartition(arr, n):
+    total = 0
+    i, j = 0, 0
+    total = sum(arr)
+    part = [[None for x in range(n+1)] for y in range(total // 2 + 1)]
+    print(part)
+    if total % 2 != 0:
         return False
-    arr = [[None for x in range(n+1)] for y in range(n)]
-    printa(arr)
-    for x in range(n+1):
-        for y in range(n):
-            if(x == 0):
-                arr[x][y] = True
-            elif(y==0 and x != 0):
-                arr[x][y] = False
-            elif x >= mat[y - 1]:
-                arr[x][y] = (arr[x][y] or arr[x - mat[y - 1]][y - 1])
+
+    for i in range(total // 2 + 1):
+        for j in range(n + 1):
+            if(i == 0):
+                part[i][j] = True
+            elif(j == 0 and i != 0):
+                part[i][j] = False
+            elif i >= arr[j - 1]:
+                    part[i][j] = (part[i][j] or part[i - arr[j - 1]][j - 1])
             else:
-                arr[x][y] = arr[x][y - 1]
-
-
-    printa(arr)
-
+                    part[i][j] = part[i][j - 1]
+    print(part[total // 2][n])
 
 arr = [3, 1, 1, 2, 2, 1]
 n = len(arr)
-findarrition(arr)
+findPartition(arr, n)

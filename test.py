@@ -18,7 +18,7 @@ def findPartition(arr, n):
 
     if sum % 2 != 0:
         return false
-
+    print((sum // 2 + 1))
     part = [[ True for i in range(n + 1)]
                    for j in range(sum // 2 + 1)]
 
@@ -33,6 +33,7 @@ def findPartition(arr, n):
 
     # fill the partition table in
     # bottom up manner
+    print(n+1)
     for i in range(1, sum // 2 + 1):
 
         for j in range(1, n + 1):
@@ -54,10 +55,3 @@ if findPartition(arr, n) == True:
 else:
     print("Can not be divided into ",
           "two subsets of equal sum")
-
-True True True True True True True
-False False True True True True True
-False False False True True True True
-False True True True True True True
-False False True True True True True
-False False False True True True True
