@@ -8,30 +8,56 @@ def printa(a):
         print()
     print()
 
-def lis(arr):
-    n = len(arr)
+def findPartition(arr, n):
+    sum = 0
+    i, j = 0, 0
 
-    # Declare the list (array) for LIS and initialize LIS
-    # values for all indexes
-    lis = [1]*n
-
-    # Compute optimized LIS values in bottom up manner
-    for i in range (1 , n):
-        for j in range(0 , i):
-            if arr[i] > arr[j] and lis[i]< lis[j] + 1 :
-                lis[i] = lis[j]+1
-
-    # Initialize maximum to 0 to get the maximum of all
-    # LIS
-    maximum = 0
-
-    # Pick maximum of all LIS values
+    # calculate sum of all elements
     for i in range(n):
-        maximum = max(maximum , lis[i])
+        sum += arr[i]
 
-    return maximum
-# end of lis function
+    if sum % 2 != 0:
+        return false
 
-# Driver program to test above function
-arr = [3, 10, 2, 1, 20]
-print("Length of lis is", lis(arr))
+    part = [[ True for i in range(n + 1)]
+                   for j in range(sum // 2 + 1)]
+
+    # initialize top row as true
+    for i in range(0, n + 1):
+        part[0][i] = True
+
+    # intialize leftmost column,
+    # except part[0][0], as 0
+    for i in range(1, sum // 2 + 1):
+        part[i][0] = False
+
+    # fill the partition table in
+    # bottom up manner
+    for i in range(1, sum // 2 + 1):
+
+        for j in range(1, n + 1):
+            part[i][j] = part[i][j - 1]
+
+            if i >= arr[j - 1]:
+                part[i][j] = (part[i][j] or
+                              part[i - arr[j - 1]][j - 1])
+
+    printa(part)
+    return part[sum // 2][n]
+
+# Driver Code
+arr = [3, 1, 1, 2, 2, 1]
+n = len(arr)
+if findPartition(arr, n) == True:
+    print("Can be divided into two",
+             "subsets of equal sum")
+else:
+    print("Can not be divided into ",
+          "two subsets of equal sum")
+
+True True True True True True True
+False False True True True True True
+False False False True True True True
+False True True True True True True
+False False True True True True True
+False False False True True True True

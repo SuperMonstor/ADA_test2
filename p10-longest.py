@@ -9,4 +9,4 @@ def subseq(arr):
     print(temp)
     print(max(temp))
 
-subseq([3, 10, 2, 1, 20])
+subseq([50, 3, 10, 7, 40, 80])
